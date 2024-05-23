@@ -1,5 +1,5 @@
 import random 
-
+import logo_guess_the_number from art
 continue_game = True
 
 chosen_number = random.randint(1, 100)
