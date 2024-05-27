@@ -13,8 +13,8 @@ def compare():
  a = {}
  b = {}
  while continue_game:
-    from art import logo
-    print(logo)
+    from art import logo_higher_lower
+    print(logo_higher_lower)
     compare_a = random.choice(data) # generating a new compare
    
     #saves the values of compare_a as string in variable a
