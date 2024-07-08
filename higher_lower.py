@@ -20,7 +20,7 @@ def compare():
     #saves the values of compare_a as string in variable a
     for keys in compare_a :
       a = compare_a['name'] + ',' +compare_a['description'] + ',' + compare_a['country']  
-    print(f"compare_A : {a}")
+    print(f"Compare_A : {a}")
     from art import vs
     print(vs)
     #saves the values of compare_b as string in variable b
