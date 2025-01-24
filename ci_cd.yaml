@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+# Workflow wird bei jedem Push in den Branch "main" gestartet
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout des Codes aus dem Repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Installiere Abhängigkeiten
+      - name: Install Dependencies
+        run: npm install
+
+      # Baue das Projekt
+      - name: Build Project
+        run: npm run build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Führe Tests aus
+      - name: Run Tests
+        run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Deployment in GitHub Pages (als Beispiel)
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
